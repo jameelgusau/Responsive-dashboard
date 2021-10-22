@@ -1,0 +1,46 @@
+@import "./../base";
+@import "main";
+@import "aside";
+@import "header";
+@import "footer";
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 5rem 1fr 5rem;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  height: 100vh;
+  overflow-x: hidden; /* Sidenav is out of view; we slide it back in */
+}
+
+.grid-container.grid-container--noscroll {
+  overflow-y: hidden;
+}
+/* Non-mobile styles, 750px breakpoint */
+@media only screen and (min-width: 75rem) {
+  /* Show the sidenav */
+  .grid-container {
+    grid-template-columns: 24rem 1fr;
+    grid-template-areas:
+      "sidenav header"
+      "sidenav main"
+      "sidenav footer";
+  }
+
+  .header__search {
+    margin-left: 0;
+  }
+
+  .sidenav {
+    // position: fixed;
+
+    transform: translateX(0);
+  }
+
+  .sidenav__close-icon {
+    visibility: hidden;
+  }
+}
